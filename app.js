@@ -2,7 +2,7 @@ const http = require('http');
 const port = 8084;
 
 const server = http.createServer((req,res)=>{
-    console.log(req);
+    console.log(req.url,req.method,req.headers);
 });
 
 server.listen(port);
