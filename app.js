@@ -15,18 +15,26 @@ const server = http.createServer((req, res) => {
   }
   if (url === '/message' && method === 'POST') {
     const body = [];
-    req.on('data', (chunk) => {
+    req.on('data', (chunk) => {       // 1- Register the event listener for Storing body data by pushing chunks 
       console.log(chunk);
       body.push(chunk);
     });
-    req.on('end', () => {
-      const parsedBody = Buffer.concat(body).toString();
+    req.on('end', () => {   // 2- This will be fired once its done parsing the incoming data or request
+      const parsedBody = Buffer.concat(body).toString(); // create buffer and add all chunks from inside body (it is only for text - toString())
       const message = parsedBody.split('=')[1];
-      fs.writeFileSync('message.txt', message);
+   
+      //  fs.writeFileSync('message.txt', message); //Block the execution until the file is created.
+
+    fs.writeFile('message.txt', message, err =>{
+        
+        // Non-Blocking or Async 
+        
+        res.statusCode = 302;
+        res.setHeader('Location', '/');
+        return res.end();    
+      });
     });
-    res.statusCode = 302;
-    res.setHeader('Location', '/');
-    return res.end();
+    
   }
   res.setHeader('Content-Type', 'text/html');
   res.write('<html>');
