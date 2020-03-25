@@ -1,7 +1,9 @@
 const http = require('http');
-const routes = require('./routes');
+//const routes = require('./routes');
+const express = require(express);
 const port = 8084;
 
-const server = http.createServer(routes.handler);  // Execute the function that stored in routesfor incoming request
+const app = express();
+const server = http.createServer();  
 
 server.listen(port);
