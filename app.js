@@ -1,22 +1,21 @@
-const http = require('http');
-const port = 3000;
-const bodyParser = require('body-parser');
 const path = require('path');
 
 const express = require('express');
+const bodyParser = require('body-parser');
+
 const app = express();
 
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
 
-// Importing Routes
-const adminRoutes = require('./routes/admin');  //importing admin.js route
-const shopRoutes = require('./routes/shop'); // importing shop.js route
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(bodyParser.urlencoded({extended:false}));
+app.use('/admin', adminRoutes);
+app.use(shopRoutes);
 
-app.use('/admin',adminRoutes); // calling admin.js by using middleware
-app.use(shopRoutes); // calling the above imported shopRoutes (shop.js in routes).
-
-app.use((req,res,next)=>{
-  res.status(404).sendFile(path.join(__dirname,'views','404.html'));
+app.use((req, res, next) => {
+    res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
 });
-app.listen(port);
+
+app.listen(3000);
