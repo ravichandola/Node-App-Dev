@@ -12,7 +12,7 @@ const shopRoutes = require('./routes/shop'); // importing shop.js route
 
 app.use(bodyParser.urlencoded({extended:false}));
 
-app.use(adminRoutes); // calling admin.js by using middleware
+app.use('/admin',adminRoutes); // calling admin.js by using middleware
 app.use(shopRoutes); // calling the above imported shopRoutes (shop.js in routes).
 
 app.use((req,res,next)=>{
