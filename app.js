@@ -15,4 +15,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(adminRoutes); // calling admin.js by using middleware
 app.use(shopRoutes); // calling the above imported shopRoutes (shop.js in routes).
 
+app.use((req,res,next)=>{
+  res.status(404).send('<h1>Page Not Found</h1>');
+});
 app.listen(port);
