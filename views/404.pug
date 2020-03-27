@@ -1,44 +1,4 @@
-doctype html
-html(lang='en')
-  head
-    meta(charset='UTF-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1.0, user-scalable=no')
-    link(href='https://fonts.googleapis.com/css?family=Lato', rel='stylesheet')
-    link(rel='stylesheet', href='css/futuriste.css')
-    title Page Not Found
-    link(rel='stylesheet', href='/css/main.css')
-    link(rel='stylesheet', href='/css/404.css')
-  body.bg-purple
-    header.main-header
-      nav.main-header__nav
-        ul.main-header__item-list
-          li.main-header__item
-            a.active(href='/') Shop
-          li.main-header__item
-            a(href='/admin/add-product') Add Product
-    .stars
-      //
-        <div class="custom-navbar">
-        <div class="brand-logo">
-        <!-- <img src="http://salehriaz.com/404Page/img/logo.svg" width="80px">
-    .navbar-links
-      ul
-    |  -->
-    .central-body
-      img.image-404(src='http://salehriaz.com/404Page/img/404.svg', width='300px')
-      a.btn-go-home(href='/') GO BACK HOME
-      // <li class="main-header__item"><a class="active" href="/">Shop</a></li>
-    .objects
-      img.object_rocket(src='http://salehriaz.com/404Page/img/rocket.svg', width='40px')
-      .earth-moon
-        img.object_earth(src='http://salehriaz.com/404Page/img/earth.svg', width='100px')
-        img.object_moon(src='http://salehriaz.com/404Page/img/moon.svg', width='80px')
-      .box_astronaut
-        img.object_astronaut(src='http://salehriaz.com/404Page/img/astronaut.svg', width='140px')
-    .glowing_stars
-      .star
-      .star
-      .star
-      .star
-      .star
-    // <h1>Page Not Found!</h1>
+extends layouts/main-layout.pug
+
+block content
+    h1 Page Not Found!
